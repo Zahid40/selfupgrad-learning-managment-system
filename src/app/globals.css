@@ -184,10 +184,6 @@
   --tracking-normal: -0.025em;
 }
 
-/*
-  ---break---
-*/
-
 .dark {
   --background: oklch(0.2050 0 0);
   --foreground: oklch(0.9850 0 0);

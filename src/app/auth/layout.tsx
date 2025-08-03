@@ -1,6 +1,3 @@
-import { GalleryVerticalEnd } from "lucide-react";
-
-import { LoginForm } from "@/components/login-form";
 import { Logo } from "@/components/logo";
 import Image from "next/image";
 import ThemeToggleButton from "@/components/ui/theme-toggle-button";
@@ -18,7 +15,7 @@ export default function AuthLayout({
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-sm flex flex-col items-center gap-4">
-            <Logo variant="full" width={180} height={60} />
+            <Logo variant="full" />
             {children}
           </div>
         </div>
@@ -27,7 +24,7 @@ export default function AuthLayout({
         <Image
           src="/images/auth-page-bg.jpg"
           alt="Image"
-          className="absolute inset-0 h-full w-full object-cover  dark:grayscale-50"
+          className="absolute inset-0 h-full w-full"
           fill
           style={{ objectFit: "cover" }}
         />
