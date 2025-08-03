@@ -15,6 +15,8 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { FaApple } from "react-icons/fa";
 
 export function SignUpForm({
   className,
@@ -66,7 +68,22 @@ export function SignUpForm({
 
       <div>
         <form onSubmit={handleSignUp}>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
+              <Button variant="outline" className="w-full">
+                <FaApple className="size-5" />
+                Continue with Apple
+              </Button>
+              <Button variant="outline" className="w-full">
+                <FcGoogle className="size-5" />
+                Continue with Google
+              </Button>
+            </div>
+            <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
+              <span className="bg-card text-muted-foreground relative z-10 px-2 text-xs">
+                Or continue with
+              </span>
+            </div>
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
