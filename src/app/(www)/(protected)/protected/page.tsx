@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { LogoutButton } from '@/components/logout-button'
 import { createClient } from '@/lib/server'
-import { getUser } from '@/action/user/user'
+import { getUser } from '@/action/user/user.action'
 
 export default async function ProtectedPage() {
   const user = await getUser()

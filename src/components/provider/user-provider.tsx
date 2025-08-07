@@ -1,12 +1,33 @@
-// /providers/UserProvider.tsx
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import { UserType } from "@/types/user.type";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
 
-export const UserContext = createContext(null);
+// Define the context shape
+type UserContextType = {
+  user: UserType;
+  setUser: Dispatch<SetStateAction<UserType>>;
+};
 
-export const UserProvider = ({ initialUser, children }:any) => {
-  const [user, setUser] = useState(initialUser);
+// Create context with undefined initial value (to force correct use within provider)
+const UserContext = createContext<UserContextType | undefined>(undefined);
+
+// Provider component
+export const UserProvider = ({
+  initialUser,
+  children,
+}: {
+  initialUser: UserType;
+  children: ReactNode;
+}) => {
+  const [user, setUser] = useState<UserType>(initialUser);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -15,11 +36,11 @@ export const UserProvider = ({ initialUser, children }:any) => {
   );
 };
 
-
+// Hook to access user context
 export const useUser = () => {
-    const context = useContext(UserContext);
-    if (!context) {
-      throw new Error("useUser must be used within a UserProvider");
-    }
-    return context;
-  };
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("useUser must be used within a UserProvider");
+  }
+  return context; // fully typed with { user: UserType; setUser: ... }
+};

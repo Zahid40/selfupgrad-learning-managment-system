@@ -1,4 +1,4 @@
-import { getUser } from '@/action/user/user';
+import { getUser } from '@/action/user/user.action';
 import { UserProvider } from '@/components/provider/user-provider'
 import React from 'react'
 
