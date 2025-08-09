@@ -9,18 +9,7 @@ export default function AuthLayout({
 }>) {
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
-      <div className="flex flex-col  gap-4 p-6 md:p-10">
-        <div className="absolute top-4 right-6 z-50">
-          <ThemeToggleButton />
-        </div>
-        <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-sm flex flex-col items-center gap-4">
-            <Logo variant="full" />
-            {children}
-          </div>
-        </div>
-      </div>
-      <div className="bg-muted relative hidden lg:block ">
+      <div className="bg-muted relative hidden lg:block">
         <Image
           src="/images/auth-page-bg.jpg"
           alt="Image"
@@ -28,6 +17,17 @@ export default function AuthLayout({
           fill
           style={{ objectFit: "cover" }}
         />
+      </div>
+      <div className="flex flex-col gap-4 p-6 md:p-10">
+        <div className="absolute top-4 right-6 z-50">
+          <ThemeToggleButton />
+        </div>
+        <div className="flex flex-1 items-center justify-center">
+          <div className="flex w-full max-w-sm flex-col items-center gap-4">
+            <Logo variant="full" className="" />
+            {children}
+          </div>
+        </div>
       </div>
     </div>
   );

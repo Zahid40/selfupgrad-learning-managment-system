@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Eclipse, Rocket, XIcon } from "lucide-react";
+import { ArrowRightIcon, Eclipse, Rocket, XIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -11,7 +11,7 @@ export default function AnnouncementBar() {
   if (!isVisible) return null;
 
   return (
-    <div className="dark bg-purple-800 text-foreground px-4 py-1">
+    <div className="dark bg-violet-600 text-foreground px-4 py-1">
       <div className="flex gap-2 md:items-center">
         <div className="flex grow gap-3 md:items-center md:justify-center">
           <Rocket
@@ -25,8 +25,13 @@ export default function AnnouncementBar() {
               addition to your toolkit.
             </p>
             <div className="flex gap-2 max-md:flex-wrap">
-              <Button size="sm" variant={"link"} className="rounded-full">
+              <Button
+                size="xs"
+                variant={"link"}
+                className="rounded-full text-foreground"
+              >
                 Learn more
+                <ArrowRightIcon />
               </Button>
             </div>
           </div>
