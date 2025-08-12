@@ -1,6 +1,6 @@
 "use client";
 
-import { CircleUserRoundIcon, XIcon } from "lucide-react";
+import { UserIcon, XIcon } from "lucide-react";
 
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ export default function AvatarDynamic(props: {
     <div className={cn("flex flex-col items-center gap-2", className)}>
       <div className="relative inline-flex">
         <Button
-          variant="outline"
+          variant="secondary"
           className="relative size-40 overflow-hidden rounded-full p-0 shadow-none"
           onClick={openFileDialog}
           aria-label={previewUrl ? "Change image" : "Upload image"}
@@ -32,7 +32,7 @@ export default function AvatarDynamic(props: {
           {previewUrl ? (
             <Image
               className="size-full object-cover"
-              src={previewUrl}
+              src={previewUrl ?? user.avatar_url}
               alt="Preview of uploaded image"
               width={64}
               height={64}
@@ -40,7 +40,7 @@ export default function AvatarDynamic(props: {
             />
           ) : (
             <div aria-hidden="true">
-              <CircleUserRoundIcon className="size-4 opacity-60" />
+              <UserIcon className="size-4 opacity-60" />
             </div>
           )}
         </Button>

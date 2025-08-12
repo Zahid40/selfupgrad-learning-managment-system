@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import ThemeToggleButton from "./ui/theme-toggle-button"
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import ThemeToggleButton from "./ui/theme-toggle-button";
+import BradCrumbDynamic from "./breadcrumb-dynamic";
 
 export function SiteHeader() {
   return (
@@ -12,11 +12,11 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">Documents</h1>
+        <BradCrumbDynamic />
         <div className="ml-auto flex items-center gap-2">
-          <ThemeToggleButton/>
+          <ThemeToggleButton />
         </div>
       </div>
     </header>
-  )
+  );
 }

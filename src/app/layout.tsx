@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, DM_Mono, Lora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TanStackProvider } from "@/components/provider/tanstack-provider";
+import { Toaster } from "@/components/ui/sonner";
 
 const bricolage_grotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -38,7 +39,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${bricolage_grotesque.className} ${dm_mono.variable} ${lora.variable}  antialiased`}
+        className={`${bricolage_grotesque.className} ${dm_mono.variable} ${lora.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -47,6 +48,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TanStackProvider>{children}</TanStackProvider>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
