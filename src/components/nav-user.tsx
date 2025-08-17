@@ -51,12 +51,12 @@ export function NavUser({ user }: { user: UserType }) {
                   />
                 )}
                 <AvatarFallback className="rounded-lg">
-                  {user.first_name ? user.first_name?.slice(0, 2) : "U"}
+                  {user.first_name ? user.first_name?.slice(0, 1) : "U"}
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-medium">
-                  {user.first_name ? user.username : "User"}
+                  {user.first_name ? user.first_name : "User"}
                 </span>
                 <span className="text-muted-foreground truncate text-xs">
                   {user.email ?? user.phone}
