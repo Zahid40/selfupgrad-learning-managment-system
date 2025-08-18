@@ -547,85 +547,6 @@
 			"typeName": "binding"
 		},
 		{
-			"id": "pointer:pointer",
-			"typeName": "pointer",
-			"x": 2489.8602683461017,
-			"y": 513.2660812723537,
-			"lastActivityTimestamp": 1755420421008,
-			"meta": {}
-		},
-		{
-			"followingUserId": null,
-			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:arrowheadStart": "none",
-				"tldraw:arrowheadEnd": "arrow"
-			},
-			"brush": null,
-			"scribbles": [],
-			"cursor": {
-				"type": "default",
-				"rotation": 0
-			},
-			"isFocusMode": false,
-			"exportBackground": true,
-			"isDebugMode": false,
-			"isToolLocked": false,
-			"screenBounds": {
-				"x": 0,
-				"y": 0,
-				"w": 1183,
-				"h": 964
-			},
-			"insets": [
-				false,
-				false,
-				true,
-				false
-			],
-			"zoomBrush": null,
-			"isGridMode": false,
-			"isPenMode": false,
-			"chatMessage": "",
-			"isChatting": false,
-			"highlightedUserIds": [],
-			"isFocused": true,
-			"devicePixelRatio": 1,
-			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
-			"openMenus": [],
-			"isChangingStyle": false,
-			"isReadonly": false,
-			"meta": {},
-			"duplicateProps": null,
-			"id": "instance:instance",
-			"currentPageId": "page:page",
-			"typeName": "instance"
-		},
-		{
-			"editingShapeId": "shape:o7r9epPoHq_ZfDLlLUTib",
-			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:o7r9epPoHq_ZfDLlLUTib"
-			],
-			"hoveredShapeId": "shape:o7r9epPoHq_ZfDLlLUTib",
-			"erasingShapeIds": [],
-			"hintingShapeIds": [],
-			"focusedGroupId": "shape:nZSEHzDgIUMpy_iJT-L6G",
-			"meta": {},
-			"id": "instance_page_state:page:page",
-			"pageId": "page:page",
-			"typeName": "instance_page_state"
-		},
-		{
-			"x": -2051.826848602236,
-			"y": -101.20302238286763,
-			"z": 1.1551630017085845,
-			"meta": {},
-			"id": "camera:page:page",
-			"typeName": "camera"
-		},
-		{
 			"x": 43,
 			"y": 82.8515625,
 			"rotation": 0,
@@ -979,7 +900,7 @@
 				"scale": 1
 			},
 			"parentId": "page:page",
-			"index": "a4Nkfels",
+			"index": "a4H8UUUb",
 			"typeName": "shape"
 		},
 		{
@@ -1106,23 +1027,6 @@
 			"parentId": "page:page",
 			"index": "a4Dl7wOR",
 			"typeName": "shape"
-		},
-		{
-			"meta": {},
-			"id": "binding:nRYnUK8oXQ-mjs7iBJfag",
-			"type": "arrow",
-			"fromId": "shape:ssnrN33WHJP3cNAbvtZF3",
-			"toId": "shape:gj8-JWr9XFi8dexIn9KeA",
-			"props": {
-				"isPrecise": true,
-				"isExact": false,
-				"normalizedAnchor": {
-					"x": 0.006708764864734062,
-					"y": 0.03372598175766495
-				},
-				"terminal": "end"
-			},
-			"typeName": "binding"
 		},
 		{
 			"x": 0,
@@ -1649,7 +1553,7 @@
 				"scale": 1
 			},
 			"parentId": "page:page",
-			"index": "a3XnhArl",
+			"index": "a3VsuwmM",
 			"typeName": "shape"
 		},
 		{
@@ -1718,40 +1622,6 @@
 					"y": 0.27021545186393225
 				},
 				"terminal": "end"
-			},
-			"typeName": "binding"
-		},
-		{
-			"meta": {},
-			"id": "binding:tWu4M7LCBm2Ap1Sf9-YUu",
-			"type": "arrow",
-			"fromId": "shape:_R8AKF5xLnnaFmjCM-poi",
-			"toId": "shape:I6SEdlR4G1fPKVvgCTqpH",
-			"props": {
-				"isPrecise": true,
-				"isExact": false,
-				"normalizedAnchor": {
-					"x": 0.0005248888689586704,
-					"y": 0.4268485179010425
-				},
-				"terminal": "end"
-			},
-			"typeName": "binding"
-		},
-		{
-			"meta": {},
-			"id": "binding:Gmb1LEKNnmQIy8pCatKBL",
-			"type": "arrow",
-			"fromId": "shape:U19_ilJgBVVneCXSZn4KM",
-			"toId": "shape:I6SEdlR4G1fPKVvgCTqpH",
-			"props": {
-				"isPrecise": true,
-				"isExact": false,
-				"normalizedAnchor": {
-					"x": 0.9982377410280119,
-					"y": 0.39604445498175905
-				},
-				"terminal": "start"
 			},
 			"typeName": "binding"
 		},
@@ -1879,40 +1749,6 @@
 			"parentId": "page:page",
 			"index": "a3XA6afE",
 			"typeName": "shape"
-		},
-		{
-			"meta": {},
-			"id": "binding:qTe4rgj7Ht3j3-ghliuOk",
-			"type": "arrow",
-			"fromId": "shape:gB1zDRd5cSr25hek113On",
-			"toId": "shape:AXvkMLpDG583HCy9SMyEv",
-			"props": {
-				"isPrecise": true,
-				"isExact": false,
-				"normalizedAnchor": {
-					"x": 0.4895865173003977,
-					"y": 0.013136577069733122
-				},
-				"terminal": "end"
-			},
-			"typeName": "binding"
-		},
-		{
-			"meta": {},
-			"id": "binding:NMwrZHt2YOGDI2G_EHger",
-			"type": "arrow",
-			"fromId": "shape:gB1zDRd5cSr25hek113On",
-			"toId": "shape:I6SEdlR4G1fPKVvgCTqpH",
-			"props": {
-				"isPrecise": true,
-				"isExact": false,
-				"normalizedAnchor": {
-					"x": 0.5024134143908134,
-					"y": 0.9987181319084119
-				},
-				"terminal": "start"
-			},
-			"typeName": "binding"
 		},
 		{
 			"meta": {},
@@ -2087,6 +1923,167 @@
 					"y": 0.9989173937780693
 				},
 				"terminal": "start"
+			},
+			"typeName": "binding"
+		},
+		{
+			"id": "pointer:pointer",
+			"typeName": "pointer",
+			"x": 1684.200711826274,
+			"y": 953.0331507085396,
+			"lastActivityTimestamp": 1755537411927,
+			"meta": {}
+		},
+		{
+			"followingUserId": null,
+			"opacityForNextShape": 1,
+			"stylesForNextShape": {},
+			"brush": null,
+			"scribbles": [],
+			"cursor": {
+				"type": "default",
+				"rotation": 0
+			},
+			"isFocusMode": false,
+			"exportBackground": true,
+			"isDebugMode": false,
+			"isToolLocked": false,
+			"screenBounds": {
+				"x": 0,
+				"y": 0,
+				"w": 1183,
+				"h": 964
+			},
+			"insets": [
+				false,
+				false,
+				true,
+				false
+			],
+			"zoomBrush": null,
+			"isGridMode": false,
+			"isPenMode": false,
+			"chatMessage": "",
+			"isChatting": false,
+			"highlightedUserIds": [],
+			"isFocused": true,
+			"devicePixelRatio": 1,
+			"isCoarsePointer": false,
+			"isHoveringCanvas": true,
+			"openMenus": [],
+			"isChangingStyle": false,
+			"isReadonly": false,
+			"meta": {},
+			"duplicateProps": null,
+			"id": "instance:instance",
+			"currentPageId": "page:page",
+			"typeName": "instance"
+		},
+		{
+			"editingShapeId": null,
+			"croppingShapeId": null,
+			"selectedShapeIds": [
+				"shape:lUJdQw3gyqyDucgzF0Kbd"
+			],
+			"hoveredShapeId": "shape:6vt3vzd14ZHf0X4kHDlWk",
+			"erasingShapeIds": [],
+			"hintingShapeIds": [],
+			"focusedGroupId": null,
+			"meta": {},
+			"id": "instance_page_state:page:page",
+			"pageId": "page:page",
+			"typeName": "instance_page_state"
+		},
+		{
+			"x": -900.2052498273072,
+			"y": 16.158089715380356,
+			"z": 0.4859722006917713,
+			"meta": {},
+			"id": "camera:page:page",
+			"typeName": "camera"
+		},
+		{
+			"meta": {},
+			"id": "binding:nRYnUK8oXQ-mjs7iBJfag",
+			"type": "arrow",
+			"fromId": "shape:ssnrN33WHJP3cNAbvtZF3",
+			"toId": "shape:gj8-JWr9XFi8dexIn9KeA",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.006708764864734062,
+					"y": 0.03372598175766495
+				},
+				"terminal": "end"
+			},
+			"typeName": "binding"
+		},
+		{
+			"meta": {},
+			"id": "binding:tWu4M7LCBm2Ap1Sf9-YUu",
+			"type": "arrow",
+			"fromId": "shape:_R8AKF5xLnnaFmjCM-poi",
+			"toId": "shape:I6SEdlR4G1fPKVvgCTqpH",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.0005248888689586704,
+					"y": 0.4268485179010425
+				},
+				"terminal": "end"
+			},
+			"typeName": "binding"
+		},
+		{
+			"meta": {},
+			"id": "binding:Gmb1LEKNnmQIy8pCatKBL",
+			"type": "arrow",
+			"fromId": "shape:U19_ilJgBVVneCXSZn4KM",
+			"toId": "shape:I6SEdlR4G1fPKVvgCTqpH",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.9982377410280119,
+					"y": 0.39604445498175905
+				},
+				"terminal": "start"
+			},
+			"typeName": "binding"
+		},
+		{
+			"meta": {},
+			"id": "binding:NMwrZHt2YOGDI2G_EHger",
+			"type": "arrow",
+			"fromId": "shape:gB1zDRd5cSr25hek113On",
+			"toId": "shape:I6SEdlR4G1fPKVvgCTqpH",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.5024134143908134,
+					"y": 0.9987181319084119
+				},
+				"terminal": "start"
+			},
+			"typeName": "binding"
+		},
+		{
+			"meta": {},
+			"id": "binding:qTe4rgj7Ht3j3-ghliuOk",
+			"type": "arrow",
+			"fromId": "shape:gB1zDRd5cSr25hek113On",
+			"toId": "shape:AXvkMLpDG583HCy9SMyEv",
+			"props": {
+				"isPrecise": true,
+				"isExact": false,
+				"normalizedAnchor": {
+					"x": 0.4895865173003977,
+					"y": 0.013136577069733122
+				},
+				"terminal": "end"
 			},
 			"typeName": "binding"
 		}
