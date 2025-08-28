@@ -2,8 +2,8 @@
 "use server";
 
 import { createClient } from "@/lib/server";
+import { UserType } from "@/types/type";
 import { redirect } from "next/navigation";
-import { UserType } from "@/types/user.type";
 
 export const getUser = async (): Promise<UserType> => {
   const supabase = await createClient();

@@ -1,0 +1,5 @@
+> Run this to Generate/Update types from supabase
+  
+  npx supabase gen types typescript --project-id "aszjaykbxvdluazbscoa" --schema public > ./src\types\db.types.ts
+
+> 

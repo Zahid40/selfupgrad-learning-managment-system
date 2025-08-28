@@ -4,7 +4,7 @@ import { UserIcon, XIcon } from "lucide-react";
 
 import { useFileUpload } from "@/hooks/use-file-upload";
 import { Button } from "@/components/ui/button";
-import { UserType } from "@/types/user.type";
+import { UserType } from "@/types/type";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 

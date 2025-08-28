@@ -1,6 +1,6 @@
 "use client";
 
-import { UserType } from "@/types/user.type";
+import { UserType } from "@/types/type";
 import {
   createContext,
   useContext,

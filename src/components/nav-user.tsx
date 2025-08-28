@@ -16,7 +16,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { UserType } from "@/types/user.type";
+import { UserType } from "@/types/type";
 import { Logout, Notification, Profile } from "iconsax-reactjs";
 import { Button } from "./ui/button";
 import Link from "next/link";

@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { Textarea } from "@/components/ui/textarea";
 import { updateUser } from "@/action/user/user.action";
+import { Database, Tables, Enums } from "@/types/db.types";
 
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -29,6 +30,8 @@ const formSchema = z.object({
   phone: z.string(),
   bio: z.string().optional(),
 });
+
+
 
 export default function AccountPage() {
   const { user, setUser } = useUser();
