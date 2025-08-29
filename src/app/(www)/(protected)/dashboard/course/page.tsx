@@ -8,36 +8,28 @@ import { Add } from "iconsax-reactjs";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { supabase } from "@/lib/client";
-import { CourseType } from "@/types/type";
 import { toast } from "sonner";
+import { getCourses, CourseListResponse } from "@/action/course/course.action";
+import { Tables } from "@/types/db.types";
 
 export default function DashboardCoursePage() {
-  const [courses, setCourses] = useState<CourseType[]>([]);
+  const [courses, setCourses] = useState<Tables<'courses'>[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch courses from Supabase
+  // Fetch courses using course actions
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
       setError(null);
       
       try {
-        const { data, error } = await supabase
-          .from('courses')
-          .select('*')
-          .order('created_at', { ascending: false });
+        const result = await getCourses({
+          sort: { field: 'created_at', direction: 'desc' },
+          limit: 50
+        });
 
-        if (error) {
-          console.error('Error fetching courses:', error);
-          setError('Failed to fetch courses');
-          toast.error('Failed to fetch courses');
-          return;
-        }
-        console.log(data)
-
-        setCourses(data || []);
+        setCourses(result.courses);
       } catch (error) {
         console.error('Error fetching courses:', error);
         setError('Failed to fetch courses');
