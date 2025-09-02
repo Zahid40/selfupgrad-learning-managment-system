@@ -45,7 +45,7 @@ export default function CourseCard(props: {
   return (
     <div
       className={cn(
-        "flex aspect-[4/5] flex-col overflow-hidden rounded-lg bg-neutral-200 transition-all hover:shadow-xl dark:bg-neutral-950",
+        "flex aspect-[4/5] min-w-xs basis-1 flex-col overflow-hidden rounded-lg bg-neutral-200 transition-all hover:shadow-xl dark:bg-neutral-950",
         className,
       )}
     >
@@ -83,36 +83,38 @@ export default function CourseCard(props: {
         </div>
       </div>
 
-      <div className="flex-1 space-y-1 p-2">
-        <p className="text-lg font-medium tracking-normal capitalize">
-          {data.title}
-        </p>
-        {data.tagline && (
-          <span className="line-clamp-2 text-xs leading-tight font-light text-foreground">
-            {data.tagline}
-          </span>
-        )}
-        <div className="pb-3">
-          {data.description && (
-            <p className="text-muted-foreground mb-3 line-clamp-3 text-sm">
-              {data.description}
-            </p>
+      <div className="flex h-full flex-1 flex-col justify-between space-y-1 p-2">
+        <div className="flex w-full flex-col items-start justify-center gap-2">
+          <p className="text-lg font-medium tracking-normal capitalize">
+            {data.title}
+          </p>
+          {data.tagline && (
+            <span className="text-foreground line-clamp-2 text-xs leading-tight font-light">
+              {data.tagline}
+            </span>
           )}
+          <div className="w-full pb-3">
+            {data.description && (
+              <p className="text-muted-foreground mb-3 line-clamp-3 text-sm">
+                {data.description}
+              </p>
+            )}
 
-          <div className="text-muted-foreground flex items-center justify-between text-sm">
-            <div className="flex items-center gap-4">
-              {data.rating !== null && (
-                <div className="flex items-center gap-1">
-                  <span>★</span>
-                  <span>{data.rating.toFixed(1)}</span>
-                </div>
+            <div className="text-muted-foreground flex w-full items-center justify-between text-sm">
+              <div className="flex items-center gap-4">
+                {data.rating !== null && (
+                  <div className="flex items-center gap-1">
+                    <span>★</span>
+                    <span>{data.rating.toFixed(1)}</span>
+                  </div>
+                )}
+              </div>
+              {data.level && (
+                <Badge variant="outline" className="text-xs">
+                  {data.level}
+                </Badge>
               )}
             </div>
-            {data.level && (
-              <Badge variant="outline" className="text-xs">
-                {data.level}
-              </Badge>
-            )}
           </div>
         </div>
 

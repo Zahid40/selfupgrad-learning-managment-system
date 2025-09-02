@@ -12,8 +12,8 @@ import { toast } from "sonner";
 import { getCourses, CourseListResponse } from "@/action/course/course.action";
 import { Tables } from "@/types/db.types";
 
-export default function DashboardCoursePage() {
-  const [courses, setCourses] = useState<Tables<'courses'>[]>([]);
+export default function CoursePage() {
+  const [courses, setCourses] = useState<Tables<"courses">[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,18 +22,18 @@ export default function DashboardCoursePage() {
     const fetchCourses = async () => {
       setLoading(true);
       setError(null);
-      
+
       try {
         const result = await getCourses({
-          sort: { field: 'created_at', direction: 'desc' },
-          limit: 50
+          sort: { field: "created_at", direction: "desc" },
+          limit: 50,
         });
 
         setCourses(result.courses);
       } catch (error) {
-        console.error('Error fetching courses:', error);
-        setError('Failed to fetch courses');
-        toast.error('Failed to fetch courses');
+        console.error("Error fetching courses:", error);
+        setError("Failed to fetch courses");
+        toast.error("Failed to fetch courses");
       } finally {
         setLoading(false);
       }
@@ -41,20 +41,8 @@ export default function DashboardCoursePage() {
 
     fetchCourses();
   }, []);
-
   return (
     <div>
-      <div className="sticky flex w-full flex-row items-center justify-between border-b-[.5px] p-4">
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-row gap-2">
-            <h1 className="text-2xl font-medium">Courses</h1>
-            <Badge variant={"secondary"}>{courses.length}</Badge>
-          </div>
-          <p className="text-xs font-light">Create and manage your courses</p>
-        </div>
-        <CreateCourseDialog />
-      </div>
-      
       <div className="p-4">
         {loading ? (
           <div className="flex items-center justify-center py-12">
@@ -67,8 +55,8 @@ export default function DashboardCoursePage() {
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
               <p className="text-muted-foreground mb-4">{error}</p>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 onClick={() => window.location.reload()}
               >
                 Try Again
@@ -78,10 +66,10 @@ export default function DashboardCoursePage() {
         ) : courses.length === 0 ? (
           <div className="flex items-center justify-center py-12">
             <div className="text-center">
-              <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-muted flex items-center justify-center">
-                <Add className="h-8 w-8 text-muted-foreground" />
+              <div className="bg-muted mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+                <Add className="text-muted-foreground h-8 w-8" />
               </div>
-              <h3 className="text-lg font-medium mb-2">No courses yet</h3>
+              <h3 className="mb-2 text-lg font-medium">No courses yet</h3>
               <p className="text-muted-foreground mb-4">
                 Get started by creating your first course
               </p>
@@ -91,11 +79,7 @@ export default function DashboardCoursePage() {
         ) : (
           <div className="flex flex-wrap gap-6">
             {courses.map((course) => (
-              <CourseCard
-                key={course.id}
-                data={course}
-                className="h-full"
-              />
+              <CourseCard key={course.id} data={course} className="h-full" />
             ))}
           </div>
         )}

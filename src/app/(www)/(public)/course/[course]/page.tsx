@@ -5,24 +5,35 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { 
-  Star, 
-  Users, 
-  User, 
-  Play, 
-  Download, 
-  Smartphone, 
-  FileText, 
-  Code, 
+import {
+  Star,
+  Users,
+  User,
+  Play,
+  Download,
+  Smartphone,
+  FileText,
+  Code,
   Award,
   Heart,
   Lock,
   CheckCircle,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
 } from "lucide-react";
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Progress } from "@/components/ui/progress";
 
 interface CoursePageProps {
@@ -32,18 +43,19 @@ interface CoursePageProps {
 }
 
 // Mock data for demonstration
-const mockCourseData = {
+const mockcourse = {
   title: "The complete advanced 6-week UI/UX design bootcamp",
   rating: 4.9,
   ratingsCount: 264250,
   studentsCount: 1936922,
   instructor: "Dr. Marley Bator",
-  description: "Our 6-week UI/UX bootcamp equips students with the essential skills to become successful designers. Our experienced instructors provide hands-on learning opportunities to design and prototype digital products, conduct user research, and create user flows and wireframes.",
+  description:
+    "Our 6-week UI/UX bootcamp equips students with the essential skills to become successful designers. Our experienced instructors provide hands-on learning opportunities to design and prototype digital products, conduct user research, and create user flows and wireframes.",
   sections: 41,
   lectures: 490,
   totalLength: "65h 33m",
-  currentPrice: 549.00,
-  originalPrice: 3499.00,
+  currentPrice: 549.0,
+  originalPrice: 3499.0,
   discount: 85,
   features: [
     { icon: Play, text: "65 hours on-demand video" },
@@ -51,7 +63,7 @@ const mockCourseData = {
     { icon: Smartphone, text: "Access on mobile and TV" },
     { icon: FileText, text: "86 articles" },
     { icon: Code, text: "8 coding exercises" },
-    { icon: Award, text: "Certificate of completion" }
+    { icon: Award, text: "Certificate of completion" },
   ],
   weeks: [
     {
@@ -61,44 +73,64 @@ const mockCourseData = {
       progress: 100,
       lessons: [
         { title: "Read before you start", duration: "02:53", completed: true },
-        { title: "Introduction to Figma essentials training course", duration: "02:45", completed: true },
-        { title: "What is the difference between UI & UX in Figma", duration: "05:22", completed: true },
-        { title: "What we are making in this Figma course", duration: "09:18", completed: false },
-        { title: "Class project 02- Create your own brief", type: "question", completed: false },
-        { title: "Class project 02- Create your own brief", type: "question", completed: false }
-      ]
+        {
+          title: "Introduction to Figma essentials training course",
+          duration: "02:45",
+          completed: true,
+        },
+        {
+          title: "What is the difference between UI & UX in Figma",
+          duration: "05:22",
+          completed: true,
+        },
+        {
+          title: "What we are making in this Figma course",
+          duration: "09:18",
+          completed: false,
+        },
+        {
+          title: "Class project 02- Create your own brief",
+          type: "question",
+          completed: false,
+        },
+        {
+          title: "Class project 02- Create your own brief",
+          type: "question",
+          completed: false,
+        },
+      ],
     },
     {
       title: "Week 2 - Beginner - Welcome to Course 1",
       isExpanded: false,
       isLocked: false,
-      progress: 0
+      progress: 0,
     },
     {
       title: "Week 3 - Beginner - The basics of user experience design",
       isExpanded: false,
       isLocked: true,
-      progress: 0
+      progress: 0,
     },
     {
       title: "Week 4 - Beginner - Getting started in UX design",
       isExpanded: false,
       isLocked: true,
-      progress: 0
+      progress: 0,
     },
     {
       title: "Week 5 - Beginner - Jobs in the field of user experience",
       isExpanded: false,
       isLocked: true,
-      progress: 0
+      progress: 0,
     },
     {
       title: "Week 6 - Beginner - Getting ahead as a junior designer",
       isExpanded: false,
       isLocked: true,
-      progress: 0
-    }
-  ]
+      progress: 0,
+    },
+  ],
 };
 
 export default async function CoursePage({ params }: CoursePageProps) {
@@ -108,10 +140,8 @@ export default async function CoursePage({ params }: CoursePageProps) {
     notFound();
   }
 
-  const courseData = mockCourseData;
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="bg-background min-h-screen">
       <div className="container mx-auto px-4 py-8">
         {/* Breadcrumbs */}
         <Breadcrumb className="mb-6">
@@ -121,7 +151,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href="/courses">Top courses</BreadcrumbLink>
+              <BreadcrumbLink href="/course">Top courses</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
@@ -130,60 +160,67 @@ export default async function CoursePage({ params }: CoursePageProps) {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Left Column - Course Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-8 lg:col-span-2">
             {/* Course Title and Stats */}
             <div>
-              <h1 className="text-3xl font-bold text-foreground mb-4">
-                {courseData.title}
+              <h1 className="text-foreground mb-4 text-3xl font-bold">
+                {course.title}
               </h1>
-              
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-4">
+
+              <div className="text-muted-foreground mb-4 flex flex-wrap items-center gap-6 text-sm">
                 <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  <span className="font-medium text-foreground">{courseData.rating}</span>
-                  <span>({courseData.ratingsCount.toLocaleString()} ratings)</span>
+                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  <span className="text-foreground font-medium">
+                    {course.rating}
+                  </span>
+                  <span>({course.rating} ratings)</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4" />
-                  <span>{courseData.studentsCount.toLocaleString()} students</span>
+                  <Users className="h-4 w-4" />
+                  <span>{course.enrollments_count} students</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <User className="w-4 h-4" />
-                  <span>{courseData.instructor}</span>
+                  <User className="h-4 w-4" />
+                  <span>{course.instructor_id}</span>
                 </div>
               </div>
 
               <p className="text-foreground leading-relaxed">
-                {courseData.description}
+                {course.description}
               </p>
             </div>
 
             {/* Course Content */}
             <div>
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-semibold text-foreground">Course content</h2>
+              <div className="mb-4 flex items-center justify-between">
+                <h2 className="text-foreground text-xl font-semibold">
+                  Course content
+                </h2>
                 <Button variant="link" className="text-primary">
                   Expand all sections
                 </Button>
               </div>
-              
-              <div className="text-sm text-muted-foreground mb-6">
-                {courseData.sections} sections • {courseData.lectures} lectures • {courseData.totalLength} total length
-              </div>
 
-              <div className="space-y-2">
-                {courseData.weeks.map((week, index) => (
+              {/* <div className="text-muted-foreground mb-6 text-sm">
+                {course.sections} sections • {course.lectures} lectures
+                • {course.totalLength} total length
+              </div> */}
+
+              {/* <div className="space-y-2">
+                {course.weeks.map((week, index) => (
                   <Collapsible key={index} open={week.isExpanded}>
                     <CollapsibleTrigger asChild>
-                      <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors">
+                      <div className="hover:bg-muted/50 flex cursor-pointer items-center justify-between rounded-lg border p-4 transition-colors">
                         <div className="flex items-center gap-3">
                           {week.isLocked ? (
-                            <Lock className="w-4 h-4 text-muted-foreground" />
+                            <Lock className="text-muted-foreground h-4 w-4" />
                           ) : (
-                            <div className="w-4 h-4 rounded-full border-2 border-primary flex items-center justify-center">
-                              {week.progress === 100 && <CheckCircle className="w-3 h-3 text-primary" />}
+                            <div className="border-primary flex h-4 w-4 items-center justify-center rounded-full border-2">
+                              {week.progress === 100 && (
+                                <CheckCircle className="text-primary h-3 w-3" />
+                              )}
                             </div>
                           )}
                           <span className="font-medium">{week.title}</span>
@@ -195,30 +232,37 @@ export default async function CoursePage({ params }: CoursePageProps) {
                             </div>
                           )}
                           {week.isExpanded ? (
-                            <ChevronDown className="w-4 h-4" />
+                            <ChevronDown className="h-4 w-4" />
                           ) : (
-                            <ChevronRight className="w-4 h-4" />
+                            <ChevronRight className="h-4 w-4" />
                           )}
                         </div>
                       </div>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
-                      <div className="ml-8 mt-2 space-y-2">
+                      <div className="mt-2 ml-8 space-y-2">
                         {week.lessons?.map((lesson, lessonIndex) => (
-                          <div key={lessonIndex} className="flex items-center justify-between py-2 px-4 rounded-md hover:bg-muted/30">
+                          <div
+                            key={lessonIndex}
+                            className="hover:bg-muted/30 flex items-center justify-between rounded-md px-4 py-2"
+                          >
                             <div className="flex items-center gap-3">
                               {lesson.completed ? (
-                                <CheckCircle className="w-4 h-4 text-green-500" />
+                                <CheckCircle className="h-4 w-4 text-green-500" />
                               ) : (
-                                <div className="w-4 h-4 rounded-full border border-muted-foreground" />
+                                <div className="border-muted-foreground h-4 w-4 rounded-full border" />
                               )}
                               <span className="text-sm">{lesson.title}</span>
                               {lesson.type === "question" && (
-                                <Badge variant="secondary" className="text-xs">1 Question</Badge>
+                                <Badge variant="secondary" className="text-xs">
+                                  1 Question
+                                </Badge>
                               )}
                             </div>
                             {lesson.duration && (
-                              <span className="text-xs text-muted-foreground">{lesson.duration}</span>
+                              <span className="text-muted-foreground text-xs">
+                                {lesson.duration}
+                              </span>
                             )}
                           </div>
                         ))}
@@ -226,7 +270,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
                     </CollapsibleContent>
                   </Collapsible>
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -236,56 +280,61 @@ export default async function CoursePage({ params }: CoursePageProps) {
               <CardContent className="p-6">
                 {/* Course Thumbnail */}
                 <div className="relative mb-6">
-                  <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
-                      <Play className="w-8 h-8 text-primary ml-1" />
+                  <div className="bg-muted flex aspect-video items-center justify-center rounded-lg">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90">
+                      <Play className="text-primary ml-1 h-8 w-8" />
                     </div>
                   </div>
                 </div>
 
                 {/* Pricing */}
                 <div className="mb-6">
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-3xl font-bold text-foreground">
-                      ${courseData.currentPrice.toLocaleString()}
+                  <div className="mb-2 flex items-baseline gap-2">
+                    <span className="text-foreground text-3xl font-bold">
+                      ${course.pricing_id}
                     </span>
-                    <span className="text-lg text-muted-foreground line-through">
-                      ${courseData.originalPrice.toLocaleString()}
+                    <span className="text-muted-foreground text-lg line-through">
+                      ${course.pricing_id}
                     </span>
                     <Badge variant="destructive" className="text-xs">
-                      {courseData.discount}% off
+                      {course.pricing_id}% off
                     </Badge>
                   </div>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2 mb-6">
+                <div className="mb-6 flex gap-2">
                   <Button className="flex-1" size="lg">
                     Buy Now
                   </Button>
                   <Button variant="outline" size="lg" className="px-3">
-                    <Heart className="w-5 h-5" />
+                    <Heart className="h-5 w-5" />
                   </Button>
                 </div>
 
                 {/* Course Features */}
-                <div>
-                  <h3 className="font-semibold text-foreground mb-4">This course includes:</h3>
+                {/* <div>
+                  <h3 className="text-foreground mb-4 font-semibold">
+                    This course includes:
+                  </h3>
                   <div className="space-y-3">
-                    {courseData.features.map((feature, index) => (
-                      <div key={index} className="flex items-center gap-3 text-sm">
-                        <feature.icon className="w-4 h-4 text-muted-foreground" />
+                    {course.features.map((feature, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 text-sm"
+                      >
+                        <feature.icon className="text-muted-foreground h-4 w-4" />
                         <span>{feature.text}</span>
                       </div>
                     ))}
                   </div>
-                </div>
+                </div> */}
 
                 <Separator className="my-6" />
 
                 {/* Additional Info */}
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground text-sm">
                     30-Day Money-Back Guarantee
                   </p>
                 </div>
