@@ -1,22 +1,30 @@
-import { getCourseById } from '@/action/course/course.action'
-import { notFound } from 'next/navigation'
+"use client";
+import { getCourseById } from "@/action/course/course.action";
+import RichTextInput from "@/components/rich-text-editor";
+import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface CourseEditPageProps {
   params: {
-    course: string
-  }
+    course: string;
+  };
 }
 
 export default async function CourseEditPage({ params }: CourseEditPageProps) {
-  const course = await getCourseById(params.course)
+  const course = await getCourseById(params.course);
+  const [content, setContent] = useState("");
+  useEffect(() => {
+    console.log("Content changed:", content);
+  }, [content]);
 
   if (!course) {
-    notFound()
+    notFound();
   }
 
   return (
     <div className="container mx-auto py-6">
       <div className="mb-6">
+        <RichTextInput content={content} setContent={setContent} />
         <h1 className="text-3xl font-bold">Edit Course</h1>
         <p className="text-muted-foreground">
           Update your course details and content
@@ -25,7 +33,7 @@ export default async function CourseEditPage({ params }: CourseEditPageProps) {
 
       <div className="grid gap-6">
         <div className="rounded-lg border p-6">
-          <h2 className="text-xl font-semibold mb-4">Course Information</h2>
+          <h2 className="mb-4 text-xl font-semibold">Course Information</h2>
           <div className="grid gap-4">
             <div>
               <label className="text-sm font-medium">Title</label>
@@ -53,26 +61,26 @@ export default async function CourseEditPage({ params }: CourseEditPageProps) {
         </div>
 
         <div className="rounded-lg border p-6">
-          <h2 className="text-xl font-semibold mb-4">Course Details</h2>
+          <h2 className="mb-4 text-xl font-semibold">Course Details</h2>
           <div className="grid gap-4">
             <div>
               <label className="text-sm font-medium">Level</label>
-              <p className="text-lg capitalize">{course.level || 'Not set'}</p>
+              <p className="text-lg capitalize">{course.level || "Not set"}</p>
             </div>
             <div>
               <label className="text-sm font-medium">Languages</label>
               <p className="text-lg">
                 {course.language && course.language.length > 0
-                  ? course.language.join(', ')
-                  : 'Not set'}
+                  ? course.language.join(", ")
+                  : "Not set"}
               </p>
             </div>
             <div>
               <label className="text-sm font-medium">Tags</label>
               <p className="text-lg">
                 {course.tags && course.tags.length > 0
-                  ? course.tags.join(', ')
-                  : 'No tags'}
+                  ? course.tags.join(", ")
+                  : "No tags"}
               </p>
             </div>
             <div>
@@ -87,7 +95,7 @@ export default async function CourseEditPage({ params }: CourseEditPageProps) {
         </div>
 
         <div className="rounded-lg border p-6">
-          <h2 className="text-xl font-semibold mb-4">Course Content</h2>
+          <h2 className="mb-4 text-xl font-semibold">Course Content</h2>
           <p className="text-muted-foreground">
             Course content management will be implemented here.
           </p>
@@ -100,5 +108,5 @@ export default async function CourseEditPage({ params }: CourseEditPageProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

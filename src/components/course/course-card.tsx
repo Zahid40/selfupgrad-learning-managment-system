@@ -10,7 +10,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Edit, Eye, MoreHorizontal, Play, Users, Users2 } from "lucide-react";
+import {
+  Edit,
+  Eye,
+  Info,
+  MoreHorizontal,
+  Play,
+  Users,
+  Users2,
+} from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -123,10 +131,16 @@ export default function CourseCard(props: {
             {[
               { for: "view", icon: Eye, title: "View", link: "/course/" },
               {
+                for: "info",
+                icon: Info,
+                title: "Info",
+                link: `/dashboard/course/${data.id}`,
+              },
+              {
                 for: "edit",
                 icon: Edit,
                 title: "Edit",
-                link: "/dashboard/course/",
+                link: `/dashboard/course/${data.id}/edit`,
               },
               {
                 for: "learners",
@@ -143,7 +157,7 @@ export default function CourseCard(props: {
                     className="flex-1 rounded-none"
                     asChild
                   >
-                    <Link href={e.link + data.slug}>
+                    <Link href={e.link}>
                       <e.icon className="h-4 w-4" />
                     </Link>
                   </Button>
