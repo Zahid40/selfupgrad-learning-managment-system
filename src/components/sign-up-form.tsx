@@ -92,7 +92,7 @@ export function SignUpForm({
   );
 }
 
-const signUpWithEmail = () => {
+const SignUpWithEmail = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");

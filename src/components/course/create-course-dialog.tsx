@@ -186,7 +186,7 @@ export function CreateCourseDialog({
         <DialogHeader>
           <DialogTitle>Create Course</DialogTitle>
           <DialogDescription>
-            Create a new course by filling out the information below. You'll be redirected to add more details after creation.
+            Create a new course by filling out the information below. You&apos;ll be redirected to add more details after creation.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>

@@ -65,6 +65,8 @@ import "prism-code-editor-lightweight/themes/github-dark.css";
 import "katex/dist/katex.min.css";
 import "easydrawer/styles.css";
 import "@excalidraw/excalidraw/index.css";
+import { useTheme } from "next-themes";
+import { debounce } from "@/lib/utils";
 
 function convertBase64ToBlob(base64: string) {
   const arr = base64.split(",");
@@ -78,7 +80,7 @@ function convertBase64ToBlob(base64: string) {
   return new Blob([u8arr], { type: mime });
 }
 
-const extensions = [
+const extensions_default = [
   BaseKit.configure({
     placeholder: {
       showOnlyCurrent: true,
@@ -207,49 +209,38 @@ const extensions = [
   Twitter,
 ];
 
-const DEFAULT = ``;
+type RichTextEditorProps = Omit<
+  React.ComponentProps<typeof RichTextEditor>,
+  "output" | "extensions" | "disable" | "content" |"onChangeContent"
+> & {
+  output?: "html" | "json" | "text";
+  extensions?: any[];
+  disable?: boolean;
+  value : any
+  onChange: (value: any) => void
+};
 
-function debounce(func: any, wait: number) {
-  let timeout: NodeJS.Timeout;
-  return function (...args: any[]) {
-    clearTimeout(timeout);
-    // @ts-ignore
-    timeout = setTimeout(() => func.apply(this, args), wait);
-  };
-}
+export default function RichTextInput({
+  value,
+  onChange,
+  extensions = extensions_default,
+  output = "html",
+  disable = false,
+}: RichTextEditorProps) {
+  const { theme } = useTheme();
 
-export default function RichTextInput(props: {
-  content:string
-  setContent: (content: string) => void
-}) {
-  // const [content, setContent] = useState(DEFAULT);
-  const {content,setContent} = props
-  const [theme, setTheme] = useState("light");
-  const [disable, setDisable] = useState(false);
-
-  const onValueChange = useCallback(
+  const onValueChange = useCallback( 
     debounce((value: any) => {
-      setContent(value);
+      onChange(value);
     }, 300),
     [],
   );
 
   return (
-    <div className="mx-[auto] my-0 flex w-full max-w-screen-lg flex-col gap-[24px] p-[24px]">
-      {/* <div
-        style={{
-          display: 'flex',
-          gap: '12px',
-          marginTop: '100px',
-          marginBottom: 10,
-        }}
-      >
-        <button type="button" onClick={() => setDisable(!disable)}>{disable ? 'Editable' : 'Readonly'}</button>
-      </div> */}
-
+    <div className="relative">
       <RichTextEditor
-        output="html"
-        content={content as any}
+        output={output}
+        content={value as any}
         onChangeContent={onValueChange}
         extensions={extensions}
         dark={theme === "dark"}

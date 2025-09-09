@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@repo/shadcn-ui/components/ui/button';
 import { CropIcon, RotateCcwIcon } from 'lucide-react';
 import { Slot } from 'radix-ui';
 import {
@@ -27,6 +26,7 @@ import ReactCrop, {
 import { cn } from '@/lib/utils';
 
 import 'react-image-crop/dist/ReactCrop.css';
+import { Button } from '../../button';
 
 const centerAspectCrop = (
   mediaWidth: number,

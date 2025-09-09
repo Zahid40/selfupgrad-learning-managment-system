@@ -1,26 +1,35 @@
-"use client"
-import { useId } from "react"
-import { CheckIcon, MinusIcon } from "lucide-react"
+"use client";
+import { useId } from "react";
+import { CheckIcon, MinusIcon } from "lucide-react";
 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { useTheme } from "next-themes"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useTheme } from "next-themes";
+import Image from "next/image";
 
 const items = [
-  { value: "light", label: "Light", image: "/assets/light-theme-thumbnail.png" },
+  {
+    value: "light",
+    label: "Light",
+    image: "/assets/light-theme-thumbnail.png",
+  },
   { value: "dark", label: "Dark", image: "/assets/dark-theme-thumbnail.png" },
-  { value: "system", label: "System", image: "/assets/system-theme-thumbnail.png" },
-]
+  {
+    value: "system",
+    label: "System",
+    image: "/assets/system-theme-thumbnail.png",
+  },
+];
 
 export default function ThemeRadioSelector() {
-  const id = useId()
-  const { theme, setTheme } = useTheme()
+  const id = useId();
+  const { theme, setTheme } = useTheme();
 
   const handleThemeChange = (value: string) => {
-    setTheme(value)
+    setTheme(value);
     if (typeof window !== "undefined") {
-      document.documentElement.setAttribute("data-theme", value)
+      document.documentElement.setAttribute("data-theme", value);
     }
-  }
+  };
 
   return (
     <fieldset className="space-y-4">
@@ -39,7 +48,7 @@ export default function ThemeRadioSelector() {
               value={item.value}
               className="peer sr-only after:absolute after:inset-0"
             />
-            <img
+            <Image
               src={item.image}
               alt={item.label}
               width={88}
@@ -63,5 +72,5 @@ export default function ThemeRadioSelector() {
         ))}
       </RadioGroup>
     </fieldset>
-  )
+  );
 }

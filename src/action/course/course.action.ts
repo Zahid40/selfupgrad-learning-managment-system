@@ -403,6 +403,7 @@ export async function updateCourse(
 ): Promise<{ success: boolean; course?: Tables<'courses'>; error?: string }> {
   try {
     const supabase = await createClient()
+    
 
     // Check if course exists
     const { data: existingCourse } = await supabase
