@@ -133,8 +133,13 @@ const mockcourse = {
   ],
 };
 
-export default async function CoursePage({ params }: CoursePageProps) {
-  const course = await getCourseBySlug(params.course);
+export default async function CoursePage({
+  params,
+}: {
+  params: Promise<{ course_slug: string }>;
+}) {
+  const { course_slug } = await params;
+  const course = await getCourseBySlug(course_slug);
 
   if (!course) {
     notFound();

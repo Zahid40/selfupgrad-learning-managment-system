@@ -14,15 +14,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Logo } from "./logo";
-import ThemeToggleButton from "./ui/theme-toggle-button";
-import AnnouncementBar from "./announcementBar";
+import { Logo } from "../logo";
+import ThemeToggleButton from "../ui/theme-toggle-button";
+import AnnouncementBar from "../announcementBar";
 import Link from "next/link";
-import { useUser } from "./provider/user-provider";
+import { useUser } from "../provider/user-provider";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "#", label: "Products" },
+  { href: "/course/academic", label: "Academic" },
   { href: "#", label: "Categories" },
   { href: "#", label: "Deals" },
 ];

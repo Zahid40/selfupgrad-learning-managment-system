@@ -2,14 +2,13 @@ import { getCourseById } from "@/action/course/course.action";
 import CourseDetailsForm from "@/components/course/course-details-form";
 import { notFound } from "next/navigation";
 
-interface CourseEditPageProps {
-  params: {
-    course: string;
-  };
-}
-
-export default async function CourseEditPage({ params }: CourseEditPageProps) {
-  const course = await getCourseById(params.course);
+export default async function CourseEditPage({
+  params,
+}: {
+  params: Promise<{ course_id: string }>;
+}) {
+  const { course_id } = await params;
+  const course = await getCourseById(course_id);
 
   if (!course) {
     notFound();

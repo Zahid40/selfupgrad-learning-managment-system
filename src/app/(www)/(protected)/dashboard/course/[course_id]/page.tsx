@@ -6,14 +6,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Edit, Eye, Users, Star, Calendar, Clock } from 'lucide-react'
 import Link from 'next/link'
 
-interface CoursePageProps {
-  params: {
-    course: string
-  }
-}
 
-export default async function CoursePage({ params }: CoursePageProps) {
-  const course = await getCourseById(params.course)
+
+export default async function CoursePage({
+  params,
+}: {
+  params: Promise<{ course_id: string }>;
+}) {
+  const { course_id } = await params;
+  const course = await getCourseById(course_id);
 
   if (!course) {
     notFound()
