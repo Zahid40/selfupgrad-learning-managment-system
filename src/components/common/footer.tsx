@@ -12,13 +12,13 @@ export default function Footer() {
     {
       title: "Quick Links",
       links: [
-        { label: "About", href: "/features" },
-        { label: "Contact", href: "/pricing" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
         { label: "FAQs", href: "/faq" },
         { label: "Blogs", href: "/blog" },
-        { label: "Report Content Error", href: "/docs" },
+        { label: "Report Content Error", href: "/" },
         { label: "Request for Custom Package", href: "/docs" },
-        { label: "Social Responsibility", href: "/docs" },
+        { label: "Social Responsibility", href: "/social" },
       ],
     },
     {
@@ -63,7 +63,7 @@ export default function Footer() {
 
   const policies = [
     { label: "Privacy Policy", href: "/privacy-policy" },
-    { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Terms of Use", href: "/terms-of-use" },
     { label: "Refund Policy", href: "/refund-policy" },
   ];
 

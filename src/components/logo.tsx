@@ -106,15 +106,25 @@ export const Logo: React.FC<LogoProps> = ({
   className = "",
 }) => {
   const { theme } = useTheme();
-  // Determine the logo based on the variant and theme
-  if (theme === "dark" && variant === "full") {
-    variant = "full_brand_white";
-  } else if (theme === "light" && variant === "full") {
-    variant = "full";
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  let currentVariant = variant;
+
+  if (mounted) {
+    // ✅ Only check theme after mounting
+    if (theme === "dark" && variant === "full")
+      currentVariant = "full_brand_white";
+    if (theme === "light" && variant === "full") currentVariant = "full";
   }
-  const logo = logoMap[variant] || logoMap.default;
+
+  const logo = logoMap[currentVariant] || logoMap.default;
+
   return (
-    <div className={cn(" flex justify-center items-center ", className)}>
+    <div className={cn("flex items-center justify-center", className)}>
       {logo}
     </div>
   );

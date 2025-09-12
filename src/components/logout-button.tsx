@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 export function LogoutButton(props: { className?: string }) {
   return (
     <Button
-      variant="secondary"
-      className={cn("hover:bg-red-900", props.className)}
+      variant="ghost"
+      className={cn("justify-start", props.className)}
       onClick={logoutUser}
     >
       <Logout />

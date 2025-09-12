@@ -19,6 +19,7 @@ import ThemeToggleButton from "../ui/theme-toggle-button";
 import AnnouncementBar from "../announcementBar";
 import Link from "next/link";
 import { useUser } from "../provider/user-provider";
+import UserMenu from "../user/user-menu";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -32,18 +33,18 @@ export default function Header() {
   const { user } = useUser();
 
   return (
-    <header className="border-b ">
+    <header className="border-b">
       <AnnouncementBar />
       <div className="flex h-16 items-center justify-between gap-4 px-4 md:px-6">
         {/* Left side */}
         <div className="flex flex-1 items-center gap-2">
           {/* Main nav */}
           <div className="flex flex-1 items-center gap-6 max-md:justify-between">
-            <a href="#" className="text-primary hover:text-primary/90">
-              <Logo variant="full" className="w-32  md:w-38" />
-            </a>
+            <Link href="/" className="text-primary hover:text-primary/90">
+              <Logo variant="full" className="w-32 md:w-38" />
+            </Link>
             {/* Search form */}
-            <div className="relative">
+            <div className="relative hidden md:flex ">
               <Input
                 id={id}
                 className="peer h-8 ps-8 pe-2"
@@ -155,12 +156,11 @@ export default function Header() {
             </NavigationMenu>
           </PopoverContent>
         </Popover>
-        {/* Right side */}
-        <div className="flex items-center gap-2 max-md:hidden">
           {user ? (
-            <Button asChild>
-              <Link href={"/dashboard"}>Dashboard</Link>
-            </Button>
+            // <Button asChild>
+            //   <Link href={"/dashboard"}>Dashboard</Link>
+            // </Button>
+            <UserMenu/>
           ) : (
             <>
               <Button asChild variant="default" size="sm" className="text-sm">
@@ -171,8 +171,9 @@ export default function Header() {
               </Button>
             </>
           )}
-
-          <ThemeToggleButton />
+        {/* Right side */}
+        <div className="flex items-center gap-2 max-md:hidden">
+{/* here things which need visible in desktop only  */}
         </div>
       </div>
     </header>

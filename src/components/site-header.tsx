@@ -1,7 +1,7 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import ThemeToggleButton from "./ui/theme-toggle-button";
 import BradCrumbDynamic from "./breadcrumb-dynamic";
+import UserMenu from "./user/user-menu";
 
 export function SiteHeader() {
   return (
@@ -14,7 +14,7 @@ export function SiteHeader() {
         />
         <BradCrumbDynamic />
         <div className="ml-auto flex items-center gap-2">
-          <ThemeToggleButton />
+          <UserMenu   />
         </div>
       </div>
     </header>
