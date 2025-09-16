@@ -20,10 +20,16 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { LayoutDashboard } from "lucide-react";
 import ThemeToggleButton from "../ui/theme-toggle-button";
 import UserAvatar from "./user-avatar";
+import { cn } from "@/lib/utils";
 
-export default function UserMenu(props: { className?: string }) {
+export default function UserMenu(props: {
+  className?: string;
+  isFull?: boolean;
+  classNameTrigger?: string;
+  classNameAvatar?: string;
+}) {
   const { user } = useUser();
-  const { className } = props;
+  const { className, isFull = true, classNameTrigger, classNameAvatar } = props;
 
   const user_nav_menu = [
     {
@@ -38,15 +44,32 @@ export default function UserMenu(props: { className?: string }) {
     },
   ];
   return (
-    <DropdownMenu >
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button size="icon" variant="ghost" className="rounded-full">
-          <UserAvatar className="size-10" user={user} />
+        <Button
+          size={!isFull ? "icon" : "default"}
+          variant="ghost"
+          className={cn(
+            "hover:bg-transparent focus-visible:ring-0",
+            isFull && "py-6",
+            classNameTrigger,
+          )}
+        >
+          <UserAvatar className={cn("size-10", classNameAvatar)} user={user} />
+          {isFull && (
+            <div className="grid flex-1 text-left text-sm leading-tight">
+              <span className="truncate font-medium">
+                {user.first_name ? user.first_name : "User"}
+              </span>
+              <span className="text-muted-foreground truncate text-xs">
+                {user.email ?? user.phone}
+              </span>
+            </div>
+          )}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         className="min-w-56 rounded-lg"
-       
         align="end"
         sideOffset={4}
       >
@@ -85,14 +108,12 @@ export default function UserMenu(props: { className?: string }) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <div className="hover:bg-transparent" >
-            <div className="flex px-4 py-1 justify-between w-full items-center ">
-                <span className="text-xs text-muted-foreground">
-                    Toggle Theme
-                </span>
+        <div className="hover:bg-transparent">
+          <div className="flex w-full items-center justify-between px-4 py-1">
+            <span className="text-muted-foreground text-xs">Toggle Theme</span>
 
-          <ThemeToggleButton />
-            </div>
+            <ThemeToggleButton />
+          </div>
         </div>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild variant="destructive">

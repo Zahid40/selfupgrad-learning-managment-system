@@ -102,12 +102,6 @@ export default function CourseCard(props: {
             </span>
           )}
           <div className="w-full pb-3">
-            {data.description && (
-              <p className="text-muted-foreground mb-3 line-clamp-3 text-sm">
-                {data.description}
-              </p>
-            )}
-
             <div className="text-muted-foreground flex w-full items-center justify-between text-sm">
               <div className="flex items-center gap-4">
                 {data.rating !== null && (

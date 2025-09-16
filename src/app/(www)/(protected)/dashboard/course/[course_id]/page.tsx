@@ -1,12 +1,21 @@
-import { getCourseById } from '@/action/course/course.action'
-import { notFound } from 'next/navigation'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Edit, Eye, Users, Star, Calendar, Clock } from 'lucide-react'
-import Link from 'next/link'
-
-
+import { getCourseById } from "@/action/course/course.action";
+import { notFound } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Edit, Eye, Users, Star, Calendar, Clock } from "lucide-react";
+import Link from "next/link";
+import CopyButton from "@/components/common/copy-button";
+import ShareButton from "@/components/common/share-button";
+import _APP_ from "@/constants/_APP_";
+import CourseThumbnail from "@/components/course/course-thumbnail";
+import HtmlContent from "@/components/common/html-render";
 
 export default async function CoursePage({
   params,
@@ -17,71 +26,92 @@ export default async function CoursePage({
   const course = await getCourseById(course_id);
 
   if (!course) {
-    notFound()
+    notFound();
   }
 
   return (
-    <div className="container mx-auto py-6">
-      <div className="mb-6 flex items-center justify-between">
+    <div className="container mx-auto flex-col p-4">
+      <div className="mb-6 flex w-full items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">{course.title}</h1>
-          <p className="text-muted-foreground mt-2">
-            Course ID: {course.id}
-          </p>
+          <div className="flex items-center justify-center gap-2 py-2">
+            <p className="text-muted-foreground">Course ID:</p>
+            <CopyButton text={course.id} title={course.id} />
+          </div>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" asChild>
             <Link href={`/dashboard/course/${course.id}/edit`}>
-              <Edit className="h-4 w-4 mr-2" />
+              <Edit className="h-4 w-4" />
               Edit Course
             </Link>
           </Button>
           <Button asChild>
             <Link href={`/course/${course.slug}`}>
-              <Eye className="h-4 w-4 mr-2" />
+              <Eye className="h-4 w-4" />
               View Public
             </Link>
           </Button>
+          <CopyButton
+            text={`${_APP_.base_url}/course/${course.slug}`}
+            title={"Copy url"}
+            size={"lg"}
+          />
+          <ShareButton title={""} text={""} />
         </div>
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         {/* Main Course Info */}
-        <div className="md:col-span-2 space-y-6">
+        <div className="space-y-6 md:col-span-2">
           <Card>
             <CardHeader>
               <CardTitle>Course Information</CardTitle>
-              <CardDescription>
-                Basic details about your course
-              </CardDescription>
+              <CardDescription>Basic details about your course</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Status</label>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Badge variant={course.status === 'published' ? 'default' : 'secondary'}>
+                  <label className="text-muted-foreground text-sm font-medium">
+                    Status
+                  </label>
+                  <div className="mt-1 flex items-center gap-2">
+                    <Badge
+                      variant={
+                        course.status === "published" ? "default" : "secondary"
+                      }
+                    >
                       {course.status}
                     </Badge>
                   </div>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Visibility</label>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Badge variant={course.visibility === 'public' ? 'default' : 'secondary'}>
+                  <label className="text-muted-foreground text-sm font-medium">
+                    Visibility
+                  </label>
+                  <div className="mt-1 flex items-center gap-2">
+                    <Badge
+                      variant={
+                        course.visibility === "public" ? "default" : "secondary"
+                      }
+                    >
                       {course.visibility}
                     </Badge>
                   </div>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Level</label>
-                  <p className="mt-1 capitalize">{course.level || 'Not set'}</p>
+                  <label className="text-muted-foreground text-sm font-medium">
+                    Level
+                  </label>
+                  <p className="mt-1 capitalize">{course.level || "Not set"}</p>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Featured</label>
-                  <div className="flex items-center gap-2 mt-1">
-                    <Badge variant={course.featured ? 'default' : 'secondary'}>
-                      {course.featured ? 'Yes' : 'No'}
+                  <label className="text-muted-foreground text-sm font-medium">
+                    Featured
+                  </label>
+                  <div className="mt-1 flex items-center gap-2">
+                    <Badge variant={course.featured ? "default" : "secondary"}>
+                      {course.featured ? "Yes" : "No"}
                     </Badge>
                   </div>
                 </div>
@@ -89,14 +119,19 @@ export default async function CoursePage({
 
               {course.description && (
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Description</label>
-                  <p className="mt-1">{course.description}</p>
+                  <label className="text-muted-foreground text-sm font-medium">
+                    Description
+                  </label>
+                  <HtmlContent html={course.description} />
                 </div>
               )}
 
+
               {course.tagline && (
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Tagline</label>
+                  <label className="text-muted-foreground text-sm font-medium">
+                    Tagline
+                  </label>
                   <p className="mt-1">{course.tagline}</p>
                 </div>
               )}
@@ -111,17 +146,15 @@ export default async function CoursePage({
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-muted flex items-center justify-center">
-                  <Calendar className="h-8 w-8 text-muted-foreground" />
+              <div className="py-8 text-center">
+                <div className="bg-muted mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+                  <Calendar className="text-muted-foreground h-8 w-8" />
                 </div>
-                <h3 className="text-lg font-medium mb-2">No content yet</h3>
+                <h3 className="mb-2 text-lg font-medium">No content yet</h3>
                 <p className="text-muted-foreground mb-4">
                   Add chapters and lessons to your course
                 </p>
-                <Button variant="outline">
-                  Add Chapter
-                </Button>
+                <Button variant="outline">Add Chapter</Button>
               </div>
             </CardContent>
           </Card>
@@ -129,6 +162,12 @@ export default async function CoursePage({
 
         {/* Sidebar */}
         <div className="space-y-6">
+          <div className="overflow-hidden rounded-xl">
+            <CourseThumbnail
+              thumbnail_url={course.thumbnail_url}
+              title={course.title}
+            />
+          </div>
           <Card>
             <CardHeader>
               <CardTitle>Course Stats</CardTitle>
@@ -136,24 +175,28 @@ export default async function CoursePage({
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <Users className="text-muted-foreground h-4 w-4" />
                   <span className="text-sm">Enrollments</span>
                 </div>
-                <span className="font-medium">{course.enrollments_count || 0}</span>
+                <span className="font-medium">
+                  {course.enrollments_count || 0}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Star className="h-4 w-4 text-muted-foreground" />
+                  <Star className="text-muted-foreground h-4 w-4" />
                   <span className="text-sm">Rating</span>
                 </div>
                 <span className="font-medium">{course.rating || 0}/5</span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-muted-foreground" />
+                  <Clock className="text-muted-foreground h-4 w-4" />
                   <span className="text-sm">Duration</span>
                 </div>
-                <span className="font-medium">{course.duration || 'Not set'}</span>
+                <span className="font-medium">
+                  {course.duration || "Not set"}
+                </span>
               </div>
             </CardContent>
           </Card>
@@ -164,46 +207,62 @@ export default async function CoursePage({
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Languages</label>
+                <label className="text-muted-foreground text-sm font-medium">
+                  Languages
+                </label>
                 <div className="mt-1">
                   {course.language && course.language.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
                       {course.language.map((lang, index) => (
-                        <Badge key={index} variant="outline">{lang}</Badge>
+                        <Badge key={index} variant="outline">
+                          {lang}
+                        </Badge>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-sm text-muted-foreground">Not set</p>
+                    <p className="text-muted-foreground text-sm">Not set</p>
                   )}
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Tags</label>
+                <label className="text-muted-foreground text-sm font-medium">
+                  Tags
+                </label>
                 <div className="mt-1">
                   {course.tags && course.tags.length > 0 ? (
                     <div className="flex flex-wrap gap-1">
                       {course.tags.map((tag, index) => (
-                        <Badge key={index} variant="outline">{tag}</Badge>
+                        <Badge key={index} variant="outline">
+                          {tag}
+                        </Badge>
                       ))}
                     </div>
                   ) : (
-                    <p className="text-sm text-muted-foreground">No tags</p>
+                    <p className="text-muted-foreground text-sm">No tags</p>
                   )}
                 </div>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Created</label>
+                <label className="text-muted-foreground text-sm font-medium">
+                  Created
+                </label>
                 <p className="mt-1 text-sm">
-                  {course.created_at ? new Date(course.created_at).toLocaleDateString() : 'Unknown'}
+                  {course.created_at
+                    ? new Date(course.created_at).toLocaleDateString()
+                    : "Unknown"}
                 </p>
               </div>
 
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Last Updated</label>
+                <label className="text-muted-foreground text-sm font-medium">
+                  Last Updated
+                </label>
                 <p className="mt-1 text-sm">
-                  {course.updated_at ? new Date(course.updated_at).toLocaleDateString() : 'Unknown'}
+                  {course.updated_at
+                    ? new Date(course.updated_at).toLocaleDateString()
+                    : "Unknown"}
                 </p>
               </div>
             </CardContent>
@@ -211,5 +270,5 @@ export default async function CoursePage({
         </div>
       </div>
     </div>
-  )
+  );
 }
