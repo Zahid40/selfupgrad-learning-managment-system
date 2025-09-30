@@ -35,6 +35,7 @@ import {
 import { Logo } from "./logo";
 import Link from "next/link";
 import { useUser } from "./provider/user-provider";
+import { UserIcon } from "lucide-react";
 
 const data = {
   navMain: [
@@ -47,6 +48,11 @@ const data = {
       title: "Courses",
       url: "/dashboard/course",
       icon: IconListDetails,
+    },
+    {
+      title: "Users",
+      url: "/dashboard/users/learners",
+      icon: UserIcon,
     },
   ],
   navClouds: [
