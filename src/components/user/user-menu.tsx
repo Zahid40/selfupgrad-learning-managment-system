@@ -59,10 +59,10 @@ export default function UserMenu(props: {
           {isFull && (
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">
-                {user.first_name ? user.first_name : "User"}
+                {user?.first_name ? user?.first_name : "User"}
               </span>
               <span className="text-muted-foreground truncate text-xs">
-                {user.email ?? user.phone}
+                {user?.email ?? user?.phone}
               </span>
             </div>
           )}
@@ -78,10 +78,10 @@ export default function UserMenu(props: {
             <UserAvatar user={user} />
             <div className="grid flex-1 text-left text-sm leading-tight">
               <span className="truncate font-medium">
-                {user.first_name ? user.first_name : "User"}
+                {user?.first_name ? user.first_name : "User"}
               </span>
               <span className="text-muted-foreground truncate text-xs">
-                {user.email ?? user.phone}
+                {user?.email ?? user?.phone}
               </span>
             </div>
           </div>

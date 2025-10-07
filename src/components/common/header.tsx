@@ -24,8 +24,8 @@ import UserMenu from "../user/user-menu";
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/course/academic", label: "Academic" },
-  { href: "#", label: "Categories" },
-  { href: "#", label: "Deals" },
+  { href: "/course/professional", label: "Professional" },
+  { href: "/course/university", label: "University" },
 ];
 
 export default function Header() {
@@ -44,7 +44,7 @@ export default function Header() {
               <Logo variant="full" className="w-32 md:w-38" />
             </Link>
             {/* Search form */}
-            <div className="relative hidden md:flex ">
+            <div className="relative hidden md:flex">
               <Input
                 id={id}
                 className="peer h-8 ps-8 pe-2"
@@ -156,24 +156,24 @@ export default function Header() {
             </NavigationMenu>
           </PopoverContent>
         </Popover>
-          {user ? (
-            // <Button asChild>
-            //   <Link href={"/dashboard"}>Dashboard</Link>
-            // </Button>
-            <UserMenu/>
-          ) : (
-            <>
-              <Button asChild variant="default" size="sm" className="text-sm">
-                <Link href="/auth/login">Login</Link>
-              </Button>
-              <Button asChild variant="secondary" size="sm" className="text-sm">
-                <Link href="/auth/sign-up">Sign Up</Link>
-              </Button>
-            </>
-          )}
+        {user ? (
+          // <Button asChild>
+          //   <Link href={"/dashboard"}>Dashboard</Link>
+          // </Button>
+          <UserMenu />
+        ) : (
+          <>
+            <Button asChild variant="default" size="sm" className="text-sm">
+              <Link href="/auth/login">Login</Link>
+            </Button>
+            <Button asChild variant="secondary" size="sm" className="text-sm">
+              <Link href="/auth/sign-up">Sign Up</Link>
+            </Button>
+          </>
+        )}
         {/* Right side */}
         <div className="flex items-center gap-2 max-md:hidden">
-{/* here things which need visible in desktop only  */}
+          {/* here things which need visible in desktop only  */}
         </div>
       </div>
     </header>

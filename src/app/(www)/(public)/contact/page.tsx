@@ -1,6 +1,7 @@
 import ContactForm from "@/components/form/contact-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -14,17 +15,17 @@ export default function ContactPage() {
             Get in touch with us
           </h1>
           <p className="text-secondary-foreground text-center text-sm font-light">
-            We warmly embrace your inquiries and input! Whether you&apos;re seeking
-            clarification on our academic offerings or require guidance with
-            enrollment, our committed team is at your service. Please don&apos;t
-            hesitate to reach out through the contact form below. Your insights
-            are priceless to us, and we eagerly anticipate connecting with you
-            soon on your online learning journey.
+            We warmly embrace your inquiries and input! Whether you&apos;re
+            seeking clarification on our academic offerings or require guidance
+            with enrollment, our committed team is at your service. Please
+            don&apos;t hesitate to reach out through the contact form below.
+            Your insights are priceless to us, and we eagerly anticipate
+            connecting with you soon on your online learning journey.
           </p>
         </div>
         <div className="flex gap-8">
-          <div className="bg-primary dark flex-2/5 rounded-xl p-8">
-            <div>
+          <div className="bg-primary dark flex flex-2/5 flex-col rounded-xl">
+            <div className="p-8">
               <p className="mb-12 text-2xl leading-tight font-medium tracking-tight text-white">
                 Contact Us Directly
               </p>
@@ -53,6 +54,14 @@ export default function ContactPage() {
                   </div>
                 ))}
               </div>
+            </div>
+            <div className="relative h-full w-full">
+              <Image
+                src={"/images/contact-bg-image.svg"}
+                alt="contact-page-bg"
+                fill
+                className="bg-cover"
+              />
             </div>
           </div>
           <div className="flex-3/5 py-8">

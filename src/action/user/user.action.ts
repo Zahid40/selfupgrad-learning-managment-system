@@ -9,24 +9,27 @@ export const getUser = async (): Promise<UserType> => {
   const supabase = await createClient();
 
   const { data: authData, error: authError } = await supabase.auth.getUser();
-
-  if (authError || !authData?.user?.id) {
-    //redirect("/auth/login"); // Exit here
-    return {} as UserType; // Return empty user if not authenticated
+  const authUser = authData?.user;
+  
+  if (authError || !authUser?.id) {
+    return {} as UserType;
   }
 
   const { data: user, error: userError } = await supabase
     .from("users")
     .select("*")
-    .eq("id", authData.user.id)
+    .eq("id", authUser.id)
     .single();
 
   if (userError || !user) {
-    //redirect("/auth/login"); // Exit if not found
-    return {} as UserType; // Return empty user if not authenticated
+    return {} as UserType;
   }
 
-  return user as UserType;
+  // Spread profile first, then add User fields
+  return {
+    ...user,       // fields from "profiles"
+    ...authUser       // Supabase auth user fields
+  } as UserType;
 };
 
 export const logoutUser = async () => {
@@ -39,30 +42,33 @@ type UpdateUserInput = Partial<
   Omit<UserType, "id" | "created_at" | "updated_at">
 >;
 
-export const updateUser = async (updates: UpdateUserInput) => {
+export const updateUser = async (updates: UpdateUserInput): Promise<UserType> => {
   const supabase = await createClient();
 
-  // Ensure user is logged in
-  const { data: authUser, error: authError } = await supabase.auth.getUser();
+  const { data: authData, error: authError } = await supabase.auth.getUser();
+  const authUser = authData?.user;
 
-  if (authError || !authUser?.user?.id) {
-    //redirect("/auth/login"); // Exit here
-    return {} as UserType; // Return empty user if not authenticated
+  if (authError || !authUser?.id) {
+    return {} as UserType;
   }
 
-  const { data, error } = await supabase
+  const { data: user, error } = await supabase
     .from("users")
     .update({
       ...updates,
       updated_at: new Date().toISOString(),
     })
-    .eq("id", authUser.user.id)
+    .eq("id", authUser.id)
     .select("*")
     .single();
 
-  if (error) {
-    throw new Error(error.message);
+  if (error || !user) {
+    throw new Error(error?.message || "User update failed");
   }
 
-  return data as UserType;
+  // Always return merged object
+  return {
+    ...user,
+    ...authUser
+  } as UserType;
 };
