@@ -13,12 +13,12 @@ import {
   Layout
 } from "lucide-react";
 import { getChaptersByCourse } from "@/action/course/chapter.action";
-import CoursePricingForm from "@/components/course/course-pricing-form";
+// import CoursePricingForm from "@/components/course/course-pricing-form";
 import CourseMediaManager from "@/components/course/course-media-manager";
-import CourseCurriculumManager from "@/components/course/course-curriculum-manager";
+// import CourseCurriculumManager from "@/components/course/course-curriculum-manager";
 import CourseSEOForm from "@/components/course/course-seo-form";
-import CertificateManager from "@/components/course/certificate-manager";
-import CourseSettingsForm from "@/components/course/course-settings-form";
+// import CertificateManager from "@/components/course/certificate-manager";
+// import CourseSettingsForm from "@/components/course/course-settings-form";
 
 export default async function CourseEditPage({
   params,
@@ -43,20 +43,20 @@ export default async function CourseEditPage({
       description: "Course title, description, category, and tags",
       content: <CourseDetailsForm courseData={course} />,
     },
-    {
-      for: "curriculum",
-      title: "Curriculum",
-      icon: List,
-      description: "Manage chapters and lessons",
-      content: <CourseCurriculumManager courseId={course_id} chapters={chapters} />,
-    },
-    {
-      for: "pricing",
-      title: "Pricing",
-      icon: DollarSign,
-      description: "Set pricing model and discounts",
-      content: <CoursePricingForm courseData={course} />,
-    },
+    // {
+    //   for: "curriculum",
+    //   title: "Curriculum",
+    //   icon: List,
+    //   description: "Manage chapters and lessons",
+    //   content: <CourseCurriculumManager courseId={course_id} chapters={chapters} />,
+    // },
+    // {
+    //   for: "pricing",
+    //   title: "Pricing",
+    //   icon: DollarSign,
+    //   description: "Set pricing model and discounts",
+    //   content: <CoursePricingForm courseData={course} />,
+    // },
     {
       for: "media",
       title: "Media",
@@ -78,20 +78,20 @@ export default async function CourseEditPage({
       description: "Meta title, description, and keywords",
       content: <CourseSEOForm courseData={course} />,
     },
-    {
-      for: "certificate",
-      title: "Certificate",
-      icon: Award,
-      description: "Certificate template and settings",
-      content: <CertificateManager courseData={course} />,
-    },
-    {
-      for: "settings",
-      title: "Settings",
-      icon: Settings,
-      description: "Status, visibility, and advanced options",
-      content: <CourseSettingsForm courseData={course} />,
-    },
+    // {
+    //   for: "certificate",
+    //   title: "Certificate",
+    //   icon: Award,
+    //   description: "Certificate template and settings",
+    //   content: <CertificateManager courseData={course} />,
+    // },
+    // {
+    //   for: "settings",
+    //   title: "Settings",
+    //   icon: Settings,
+    //   description: "Status, visibility, and advanced options",
+    //   content: <CourseSettingsForm courseData={course} />,
+    // },
   ];
 
   return (

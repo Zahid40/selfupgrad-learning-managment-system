@@ -3,20 +3,6 @@
 import { cn } from "@/lib/utils";
 import { createClient } from "@/lib/client";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { PasswordInput } from "@/components/ui/password-input";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -27,14 +13,6 @@ import { FaApple, FaGithub } from "react-icons/fa";
 import { Mail } from "lucide-react";
 import { Call } from "iconsax-reactjs";
 
-// const signUpSchema = z.object({
-//   first_name: z.string().min(1).min(3),
-//   last_name: z.string().min(1).min(3).optional(),
-//   email: z.string(),
-//   phone_number: z.string(),
-//   password: z.string(),
-//   "repeat-password": z.string(),
-// });
 
 export function SignUpForm({
   className,
