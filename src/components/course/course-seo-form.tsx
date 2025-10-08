@@ -237,7 +237,7 @@ export default function CourseSEOForm(props: { courseData: CourseType }) {
     setLoading(true);
 
     try {
-      const result = await updateCourse(CD.id, values, user.id);
+      const result = await updateCourse(CD.id, values, user?.id!);
 
       if (result.success) {
         toast.success("SEO settings updated successfully!");

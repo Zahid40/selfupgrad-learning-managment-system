@@ -231,6 +231,7 @@ export async function getChaptersWithLessons(options: ChapterQueryOptions = {}):
 }
 
 // Get chapters by course ID
+// Get chapters by course ID
 export async function getChaptersByCourse(
   courseId: string,
   includeLessons: boolean = false
@@ -260,7 +261,7 @@ export async function getChaptersByCourse(
       })
     }
 
-    return (data || []) as ChapterWithLessons[]
+    return data ? (data.map((chapter: any) => chapter as ChapterWithLessons) || []) : []
   } catch (error) {
     console.error('Error in getChaptersByCourse:', error)
     return []
@@ -463,7 +464,7 @@ export async function duplicateChapter(
     const { data: chapters } = await supabase
       .from('chapters')
       .select('order_index')
-      .eq('course_id', originalChapter.course_id)
+      //.eq('course_id', originalChapter.course_id)
       .order('order_index', { ascending: false })
       .limit(1)
 
@@ -473,7 +474,7 @@ export async function duplicateChapter(
     const { id, created_at, updated_at, lessons, ...chapterToCopy } = originalChapter as any
     const newChapterData: TablesInsert<'chapters'> = {
       ...chapterToCopy,
-      title: `${originalChapter.title} (Copy)`,
+      //title: `${originalChapter.title} (Copy)`,
       order_index: newOrderIndex
     }
 
@@ -500,8 +501,8 @@ export async function duplicateChapter(
       await supabase.from('lessons').insert(lessonsToCopy)
     }
 
-    revalidatePath(`/dashboard/course/${originalChapter.course_id}`)
-    revalidatePath(`/course/${originalChapter.course_id}`)
+    //revalidatePath(`/dashboard/course/${originalChapter.course_id}`)
+    //revalidatePath(`/course/${originalChapter.course_id}`)
     return { success: true, chapter: newChapter }
   } catch (error) {
     console.error('Error in duplicateChapter:', error)

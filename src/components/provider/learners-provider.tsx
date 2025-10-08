@@ -42,7 +42,7 @@ export function LearnersProvider({ children }: { children: React.ReactNode }) {
     queryKey: ["learners", filters, sort, pagination],
     queryFn: () => getUsers(filters, sort, pagination),
     staleTime: 5 * 60 * 1000, // 5 minutes
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: false, 
   });
 
   return (

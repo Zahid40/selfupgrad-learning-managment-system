@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/provider/theme-provider";
 import { TanStackProvider } from "@/components/provider/tanstack-provider";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 
 const bricolage_grotesque = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -37,15 +38,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
+      <head>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+      </head>
       <body
         className={`${bricolage_grotesque.className} ${dm_mono.variable} ${lora.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-        >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TanStackProvider>{children}</TanStackProvider>
           <Toaster />
         </ThemeProvider>

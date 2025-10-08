@@ -24,7 +24,6 @@ export default function AvatarDynamic(props: {
     <div className={cn("flex flex-col items-center gap-2", className)}>
       <div className="relative inline-flex">
         <Button
-          variant="secondary"
           className="relative size-40 overflow-hidden rounded-full p-0 shadow-none"
           onClick={openFileDialog}
           aria-label={previewUrl ? "Change image" : "Upload image"}
@@ -40,7 +39,9 @@ export default function AvatarDynamic(props: {
             />
           ) : (
             <div aria-hidden="true">
-              <UserIcon className="size-4 opacity-60" />
+              <span className="text-2xl font-semibold uppercase">
+                {user.first_name?.[0] || "U"}
+              </span>
             </div>
           )}
         </Button>
@@ -63,13 +64,11 @@ export default function AvatarDynamic(props: {
         />
       </div>
       {fileName && <p className="text-muted-foreground text-xs">{fileName}</p>}
-      <p
-        aria-live="polite"
-        role="region"
-        className="text-muted-foreground mt-2 text-xs"
-      >
-        Avatar upload button
-      </p>
+      {previewUrl && (
+        <Button size="sm" onClick={() => removeFile(files[0]?.id)}>
+          Update
+        </Button>
+      )}
     </div>
   );
 }

@@ -21,6 +21,7 @@ import { PhoneInput } from "@/components/ui/phone-input";
 import { Textarea } from "@/components/ui/textarea";
 import { updateUser } from "@/action/user/user.action";
 import { Database, Tables, Enums } from "@/types/db.types";
+import UserAvatar from "@/components/user/user-avatar";
 
 const formSchema = z.object({
   username: z.string().min(1, "Username is required"),
@@ -31,20 +32,18 @@ const formSchema = z.object({
   bio: z.string().optional(),
 });
 
-
-
 export default function AccountPage() {
   const { user, setUser } = useUser();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: user.username ?? "",
-      first_name: user.first_name ?? "",
-      last_name: user.last_name ?? "",
-      email: user.email ?? "",
-      phone: user.phone ?? "",
-      bio: user.bio ?? "",
+      username: user?.username ?? "",
+      first_name: user?.first_name ?? "",
+      last_name: user?.last_name ?? "",
+      email: user?.email ?? "",
+      phone: user?.phone ?? "",
+      bio: user?.bio ?? "",
     },
   });
 
@@ -64,7 +63,11 @@ export default function AccountPage() {
       <div className="h-32 w-full bg-purple-800"></div>
       <div className="flex w-full flex-col gap-8 px-4 md:flex-row">
         <div>
-          <AvatarDynamic user={user} className="relative -top-18" />
+          <UserAvatar
+            isEditable
+            user={user}
+            className="relative -top-18 size-42"
+          />
         </div>
         <div className="w-full flex-1">
           <Form {...form}>

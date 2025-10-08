@@ -7,7 +7,7 @@ export default function Onboarding() {
   return (
     <section className="h-screen w-full">
       <div>
-        <h1 className="text-2xl font-bold">Welcome, {user.first_name}!</h1>
+        <h1 className="text-2xl font-bold">Welcome, {user?.first_name}!</h1>
       </div>
       <h1>Onboarding</h1>
       <p>Welcome to the onboarding page!</p>

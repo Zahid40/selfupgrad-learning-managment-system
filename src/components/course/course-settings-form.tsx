@@ -95,7 +95,7 @@ export default function CourseSettingsForm(props: { courseData: CourseType }) {
     console.log("Form Data:", values);
     setLoading(true);
     try {
-      const result = await updateCourse(CD.id, values, user.id);
+      const result = await updateCourse(CD.id, values, user?.id!);
 
       if (result.success && result.course) {
         toast.success("Course settings updated successfully!");

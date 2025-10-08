@@ -366,6 +366,7 @@ export default function CourseCurriculumManager({
       content_body: "",
       duration: 0,
       is_preview: false,
+      
     },
   });
 

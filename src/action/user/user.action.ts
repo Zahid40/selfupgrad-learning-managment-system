@@ -10,7 +10,7 @@ export const getUser = async (): Promise<UserType> => {
 
   const { data: authData, error: authError } = await supabase.auth.getUser();
   const authUser = authData?.user;
-  
+
   if (authError || !authUser?.id) {
     return {} as UserType;
   }
@@ -27,8 +27,8 @@ export const getUser = async (): Promise<UserType> => {
 
   // Spread profile first, then add User fields
   return {
-    ...user,       // fields from "profiles"
-    ...authUser       // Supabase auth user fields
+    ...user, // fields from "profiles"
+    ...authUser, // Supabase auth user fields
   } as UserType;
 };
 
@@ -42,7 +42,9 @@ type UpdateUserInput = Partial<
   Omit<UserType, "id" | "created_at" | "updated_at">
 >;
 
-export const updateUser = async (updates: UpdateUserInput): Promise<UserType> => {
+export const updateUser = async (
+  updates: UpdateUserInput,
+): Promise<UserType> => {
   const supabase = await createClient();
 
   const { data: authData, error: authError } = await supabase.auth.getUser();
@@ -69,6 +71,6 @@ export const updateUser = async (updates: UpdateUserInput): Promise<UserType> =>
   // Always return merged object
   return {
     ...user,
-    ...authUser
+    ...authUser,
   } as UserType;
 };

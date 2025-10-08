@@ -266,7 +266,7 @@ export default function CourseMediaManager(props: { courseData: CourseType }) {
         return;
       }
 
-      const result = await updateCourse(CD.id, values, user.id);
+      const result = await updateCourse(CD.id, values, user?.id!);
 
       if (result.success) {
         toast.success("Media settings updated successfully!");
