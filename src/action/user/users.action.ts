@@ -138,7 +138,7 @@ export async function getUsers(
 ): Promise<UsersQueryResult> {
   try {
     // Check permissions
-    await checkUserPermission(["admin", "instructor"]);
+    await checkUserPermission(["admin", "instructor" , "authenticated"]);
 
     const supabase = await createClient();
     const page = pagination?.page || 1;

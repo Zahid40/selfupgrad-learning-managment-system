@@ -77,9 +77,14 @@ export default function UserMenu(props: {
           <div className="flex items-center gap-2 rounded-full">
             <UserAvatar user={user} />
             <div className="grid flex-1 text-left text-sm leading-tight">
-              <span className="truncate font-medium">
-                {user?.first_name ? user.first_name : "User"}
-              </span>
+              <p className="flex items-center gap-1">
+                <span className="truncate font-medium">
+                  {user?.first_name ? user.first_name : "User"}
+                </span>
+                <span className="text-muted-foreground text-[12px]">
+                  ( {user?.role} )
+                </span>
+              </p>
               <span className="text-muted-foreground truncate text-xs">
                 {user?.email ?? user?.phone}
               </span>
